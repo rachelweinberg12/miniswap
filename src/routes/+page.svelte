@@ -2,6 +2,9 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import { page } from '$app/stores';
+	import Account from './Account.svelte';
+	import Auth from './Auth.svelte';
 </script>
 
 <svelte:head>
@@ -26,6 +29,14 @@
 	</h2>
 
 	<Counter />
+
+	{#if !$page.data.session}
+		<h1>Not logged in</h1>
+		<Auth />
+	{:else}
+		<h1>Logged in</h1>
+		<Account session={$page.data.session} />
+	{/if}
 </section>
 
 <style>
