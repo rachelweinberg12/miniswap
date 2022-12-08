@@ -78,12 +78,6 @@ pre {
 	margin: 0 auto;
 }
 
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
-}
-
 button:focus:not(:focus-visible) {
 	outline: none;
 }
@@ -112,12 +106,6 @@ button:focus:not(:focus-visible) {
 	background: #fff;
 	color: black;
 	cursor: pointer;
-}
-
-input {
-	padding: 0.5rem;
-	border: 1px solid #ccc;
-	border-radius: 0.25rem;
 }
 
 label {
