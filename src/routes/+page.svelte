@@ -5,6 +5,7 @@
 	import { page } from '$app/stores';
 	import Account from './Account.svelte';
 	import Auth from './Auth.svelte';
+	import Event from './Event.svelte';
 </script>
 
 <svelte:head>
@@ -36,6 +37,7 @@
 	{:else}
 		<h1>Logged in</h1>
 		<Account session={$page.data.session} />
+		<Event userId={$page.data.session.user.id} />
 	{/if}
 </section>
 

@@ -2,13 +2,18 @@
 	import { onMount } from 'svelte';
 	import type { AuthSession } from '@supabase/supabase-js';
 	import { supabase } from '$lib/supabaseClient';
+	import Avatar from './Avatar.svelte';
 
 	export let session: AuthSession;
 
+	console.log('session in account:', session);
+
 	let loading = false;
 	let username: string | null = null;
-	let website: string | null = null;
-	let avatarUrl: string | null = null;
+	let firstname: string | null = null;
+	let lastname: string | null = null;
+	let bio: string | null = null;
+	let avatarUrl: string = 'default_profile.jpeg';
 
 	onMount(() => {
 		getProfile();
@@ -21,13 +26,15 @@
 
 			const { data, error, status } = await supabase
 				.from('profiles')
-				.select(`username, website, avatar_url`)
+				.select(`username, bio, firstname, lastname, avatar_url`)
 				.eq('id', user.id)
 				.single();
 
 			if (data) {
 				username = data.username;
-				website = data.website;
+				bio = data.bio;
+				firstname = data.firstname;
+				lastname = data.lastname;
 				avatarUrl = data.avatar_url;
 			}
 
@@ -49,7 +56,9 @@
 			const updates = {
 				id: user.id,
 				username,
-				website,
+				firstname,
+				lastname,
+				bio,
 				avatar_url: avatarUrl,
 				updated_at: new Date()
 			};
@@ -82,17 +91,27 @@
 </script>
 
 <form class="form-widget" on:submit|preventDefault={updateProfile}>
+	<!-- Show a placeholder with via -->
+	<Avatar bind:url={avatarUrl} size={10} on:upload={updateProfile} />
 	<div>
 		<label for="email">Email</label>
 		<input id="email" type="text" value={session.user.email} disabled />
 	</div>
 	<div>
-		<label for="username">Name</label>
+		<label for="username">Username</label>
 		<input id="username" type="text" bind:value={username} />
 	</div>
 	<div>
-		<label for="website">Website</label>
-		<input id="website" type="website" bind:value={website} />
+		<label for="firstname">First Name</label>
+		<input id="firstname" type="text" bind:value={firstname} />
+	</div>
+	<div>
+		<label for="lastname">Last Name</label>
+		<input id="lastname" type="text" bind:value={lastname} />
+	</div>
+	<div>
+		<label for="bio">Bio</label>
+		<input id="bio" type="text" bind:value={bio} />
 	</div>
 
 	<div>

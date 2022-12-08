@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import Header from './Header.svelte';
 	import './styles.css';
+	import '../app.css';
 
 	onMount(() => {
 		const {

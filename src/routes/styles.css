@@ -93,3 +93,34 @@ button:focus:not(:focus-visible) {
 		font-size: 2.4rem;
 	}
 }
+
+.form-widget {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 0.5rem;
+	margin: 1rem 0;
+}
+
+.form-widget > * {
+	margin: 0 auto;
+}
+
+.button {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 0.25rem;
+	background: #fff;
+	color: black;
+	cursor: pointer;
+}
+
+input {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 0.25rem;
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
