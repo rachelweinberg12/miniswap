@@ -30,7 +30,7 @@
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
-	<a class="rachel" href="/rachel">Rachel's page</a>
+	<a class="rachel" href="/rachel">rachel's page</a>
 
 	<Counter />
 
