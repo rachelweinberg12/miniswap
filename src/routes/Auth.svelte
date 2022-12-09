@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabaseClient';
+	import Button from './Button.svelte';
 
 	let loading = false;
 	let email: string;
@@ -22,18 +23,14 @@
 
 <form class="row flex-center flex" on:submit|preventDefault={handleLogin}>
 	<div class="col-6 form-widget">
-		<h1 class="header">Supabase + SvelteKit</h1>
 		<p class="description">Sign in via magic link with your email below</p>
 		<div>
 			<input class="inputField" type="email" placeholder="Your email" bind:value={email} />
 		</div>
 		<div>
-			<input
-				type="submit"
-				class="button block"
-				value={loading ? 'Loading' : 'Send magic link'}
-				disabled={loading}
-			/>
+			<Button class="button block" disabled={loading}
+				>{loading ? 'Loading' : 'Send magic link'}</Button
+			>
 		</div>
 	</div>
 </form>

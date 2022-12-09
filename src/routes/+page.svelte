@@ -6,6 +6,7 @@
 	import Account from './Account.svelte';
 	import Auth from './Auth.svelte';
 	import Event from './Event.svelte';
+	import Heading1 from './Heading1.svelte';
 </script>
 
 <svelte:head>
@@ -13,7 +14,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
+<section class="font-dosis flex flex-col justify-center items-center">
 	<h1>
 		<span class="welcome">
 			<picture>
@@ -29,10 +30,12 @@
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
+	<a class="rachel" href="/rachel">Rachel's page</a>
+
 	<Counter />
 
 	{#if !$page.data.session}
-		<h1>Not logged in</h1>
+		<Heading1 text="run retreats with one platform." />
 		<Auth />
 	{:else}
 		<h1>Logged in</h1>
@@ -42,14 +45,6 @@
 </section>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
 	h1 {
 		width: 100%;
 	}

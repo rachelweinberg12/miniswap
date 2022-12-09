@@ -73,7 +73,10 @@
 	{/if}
 
 	<div style="width: {size}em;">
-		<label class="button primary block" for="single">
+		<label
+			class="border border-violet-300 hover:bg-violet-300 hover:cursor-pointer hover:text-white active:bg-violet-500 bg-white px-4 py-2 my-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 text-center"
+			for="single"
+		>
 			{uploading ? 'Uploading ...' : 'Upload'}
 		</label>
 		<input
@@ -81,6 +84,7 @@
 			type="file"
 			id="single"
 			accept="image/*"
+			class="hidden absolute border p-0 border-violet-300 hover:bg-violet-300 hover:cursor-pointer hover:text-white active:bg-violet-500 bg-white px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
 			bind:files
 			on:change={uploadAvatar}
 			disabled={uploading}

@@ -3,6 +3,8 @@
 	import type { AuthSession } from '@supabase/supabase-js';
 	import { supabase } from '$lib/supabaseClient';
 	import Avatar from './Avatar.svelte';
+	import ShortTextBox from './ShortTextBox.svelte';
+	import Button from './Button.svelte';
 
 	export let session: AuthSession;
 
@@ -95,35 +97,30 @@
 	<Avatar bind:url={avatarUrl} size={10} on:upload={updateProfile} />
 	<div>
 		<label for="email">Email</label>
-		<input id="email" type="text" value={session.user.email} disabled />
+		<ShortTextBox text={session.user.email} disabled />
 	</div>
 	<div>
 		<label for="username">Username</label>
-		<input id="username" type="text" bind:value={username} />
+		<ShortTextBox bind:text={username} />
 	</div>
 	<div>
 		<label for="firstname">First Name</label>
-		<input id="firstname" type="text" bind:value={firstname} />
+		<ShortTextBox bind:text={firstname} />
 	</div>
 	<div>
 		<label for="lastname">Last Name</label>
-		<input id="lastname" type="text" bind:value={lastname} />
+		<ShortTextBox bind:text={lastname} />
 	</div>
 	<div>
 		<label for="bio">Bio</label>
-		<input id="bio" type="text" bind:value={bio} />
+		<ShortTextBox bind:text={bio} />
 	</div>
 
 	<div>
-		<input
-			type="submit"
-			class="button block primary"
-			value={loading ? 'Loading...' : 'Update'}
-			disabled={loading}
-		/>
+		<Button disabled={loading}>{loading ? 'Loading...' : 'Update'}</Button>
 	</div>
 
 	<div>
-		<button class="button block" on:click={signOut} disabled={loading}>Sign Out</button>
+		<Button on:click={signOut} disabled={loading}>Sign Out</Button>
 	</div>
 </form>
